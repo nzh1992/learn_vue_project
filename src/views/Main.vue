@@ -2,7 +2,7 @@
     <div class="common-layout">
         <el-container class="lay-container">
             <!-- 自定义左侧的组件 -->
-            <common-aside/>
+            <CommonAside></CommonAside>
             <el-container>
                 <el-header class="el-header">
                     <common-header/>
@@ -15,7 +15,9 @@
     </div>
 </template>
 
-<script>
+<script setup>
+import CommonAside from '@/components/CommonAside.vue';
+
 
 </script>
 

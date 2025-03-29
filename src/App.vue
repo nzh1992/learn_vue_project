@@ -1,12 +1,11 @@
-<script setup>
-
-</script>
-
 <template>
     <router-view></router-view>
-    <el-button>默认</el-button>
-    <el-button type="success">默认</el-button>
+    <Main></Main>
 </template>
+
+<script setup>
+import Main from '@/views/Main.vue';
+</script>
 
 <style>
 #app {
