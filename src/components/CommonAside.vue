@@ -3,8 +3,7 @@
         <el-menu
             default-active="2"
             class="el-menu"
-            @open="handleOpen"
-            @close="handleClose"
+            :collapse="false"
         >
             <h3>通用后台管理系统</h3>
             <el-menu-item v-for="item in noChildren" :index="item.path" :key="item.path">
