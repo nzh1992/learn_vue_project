@@ -5,7 +5,7 @@
             <CommonAside></CommonAside>
             <el-container>
                 <el-header class="el-header">
-                    <common-header/>
+                    <CommonHeader></CommonHeader>
                 </el-header>
                 <el-main class="right-main">
                     main
@@ -17,6 +17,7 @@
 
 <script setup>
 import CommonAside from '@/components/CommonAside.vue';
+import CommonHeader from '@/components/CommonHeader.vue';
 
 
 </script>
