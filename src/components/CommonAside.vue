@@ -1,11 +1,12 @@
 <template>
-    <el-aside width="180px" class="el-aside">
+    <el-aside width="{{width}}" class="el-aside">
         <el-menu
             default-active="2"
             class="el-menu"
-            :collapse="false"
+            :collapse="isCollapse"
         >
-            <h3>通用后台管理系统</h3>
+            <h3 v-show="!isCollapse">通用后台管理系统</h3>
+            <h3 v-show="isCollapse">后台</h3>
             <el-menu-item v-for="item in noChildren" :index="item.path" :key="item.path">
                 <component class="icons" :is="item.icon"></component>
                 <span>{{ item.label }}</span>
@@ -30,6 +31,7 @@
 
 <script setup>
 import { ref, computed } from "vue";
+import { useAllDataStore } from "@/stores"
 
 const list = ref([
     {
@@ -78,6 +80,14 @@ const list = ref([
 
 const noChildren = computed(() => list.value.filter(item => !item.children))
 const hasChildren = computed(() => list.value.filter(item => item.children))
+const store = useAllDataStore()
+const isCollapse = computed(() => store.state.isCollapse)
+
+// 菜单宽度，折叠状态64px，展开状态180px
+const width = computed(() => store.state.isCollapse ? '64px' : '180px')
+
+console.log("isCollapse: ", isCollapse.value);
+console.log("width: ", width.value);
 </script>
 
 <style lang="less" scoped>
