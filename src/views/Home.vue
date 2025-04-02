@@ -33,6 +33,7 @@
 
 <script setup>
     import {ref} from "vue";
+    import axios from "axios";
 
     const getImageUrl = (user) => {
         return new URL(`../assets/images/${user}.png`, import.meta.url).href;
@@ -58,6 +59,16 @@
         todayBuy: "今日购买",
         monthBuy: "本月购买",
         totalBuy: "总购买",
+    })
+
+    axios({
+        url: "/api/home/getTableData",
+        method: "get",
+    }).then(res => {
+        if (res.data.code === 200) {
+            console.log(res.data.data.tableData)
+            tableData.value = res.data.data.tableData
+        }
     })
 </script>
 

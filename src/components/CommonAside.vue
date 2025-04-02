@@ -87,8 +87,6 @@ const isCollapse = computed(() => store.state.isCollapse)
 // 菜单宽度，折叠状态64px，展开状态180px
 const width = computed(() => store.state.isCollapse ? '64px' : '180px')
 
-console.log("isCollapse: ", isCollapse.value);
-console.log("width: ", width.value);
 </script>
 
 <style lang="less" scoped>
