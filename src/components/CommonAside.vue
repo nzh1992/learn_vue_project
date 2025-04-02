@@ -4,6 +4,7 @@
             default-active="2"
             class="el-menu"
             :collapse="isCollapse"
+            :collapse-transition="false"
         >
             <h3 v-show="!isCollapse">通用后台管理系统</h3>
             <h3 v-show="isCollapse">后台</h3>
