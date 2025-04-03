@@ -32,8 +32,9 @@
 </template>
 
 <script setup>
-    import {ref} from "vue";
-    import axios from "axios";
+    import { ref, getCurrentInstance, onMounted } from "vue";
+
+    const { proxy } = getCurrentInstance()
 
     const getImageUrl = (user) => {
         return new URL(`../assets/images/${user}.png`, import.meta.url).href;
@@ -61,14 +62,13 @@
         totalBuy: "总购买",
     })
 
-    axios({
-        url: "/api/home/getTableData",
-        method: "get",
-    }).then(res => {
-        if (res.data.code === 200) {
-            console.log(res.data.data.tableData)
-            tableData.value = res.data.data.tableData
-        }
+    const getTableData = async () => {
+        const data = await proxy.$api.getTableData();
+        tableData.value = data.tableData;
+    }
+
+    onMounted(() => {
+        getTableData()
     })
 </script>
 
